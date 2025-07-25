@@ -3,12 +3,20 @@
 //  ocr-cluster
 //
 
-import Vapor
+import Foundation
 import Logging
+import Vapor
 
 public func configure(_ app: Application) throws {
-    // 配置日志
-    app.logger.logLevel = .info
+    // 读取配置文件
+    if let portString = Environment.get("PORT"), let port = Int(portString) {
+        app.http.server.configuration.port = port
+    } else {
+        app.http.server.configuration.port = 7322
+    }
+  
+    // 在 configure 里这样用
+    app.routes.defaultMaxBodySize = "10mb"
     
     // 注册服务
     app.clusterManager = ClusterManager(client: app.client)

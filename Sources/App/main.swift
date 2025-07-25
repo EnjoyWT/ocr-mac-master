@@ -34,7 +34,6 @@ DispatchQueue.global(qos: .userInitiated).async {
         defer { app.shutdown() }
 
         try configure(app)
-
         try app.run()
 
   

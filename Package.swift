@@ -2,9 +2,9 @@
 import PackageDescription
 
 let package = Package(
-    name: "ocr-cluster",
+    name: "ocrsc",
     platforms: [
-        .macOS(.v13)
+        .macOS(.v13),
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", from: "4.92.0"),
@@ -17,7 +17,6 @@ let package = Package(
                 .product(name: "Vapor", package: "vapor"),
                 .product(name: "Logging", package: "swift-log"),
             ]
-        )
-        
+        ),
     ]
 )
